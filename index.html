@@ -22,6 +22,34 @@
 	<p align=center>
 	This Website is Under Construction.. <br> More Info Coming Soon...
 	</p>
-<audio src="./granite.mp3" autoplay></audio>
+<p align="center">
+    <a href="javascript:void(0)" onclick="toggleMusic()">
+        <img src="music.gif" width="128" height="128" border="0" alt="Play Music">
+    </a>
+</p>
+
+<audio id="bgMusic" src="./granite.mp3" loop></audio>
+
+<script>
+    function toggleMusic() {
+        var music = document.getElementById('bgMusic');
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+</script>
+	
+	<br>
+	<br>
+	<br>
+	<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com/" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=21480661&style=0001&nbdigits=5&type=page&initCount=0" title="Free Tools" Alt="Free Tools"   border="0" /></a>                                    
+                                    
+                                        
+                                          
+                            
 </body>
 </html>

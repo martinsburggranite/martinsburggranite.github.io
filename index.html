@@ -8,49 +8,58 @@
     image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
     -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */'
     
-} </style>
-<p align=center>
+} <style>
+    /* Base styles for all images */
+    img {
+        display: block;
+        margin: 0 auto; /* Centers the images */
+        image-rendering: pixelated;
+        -ms-interpolation-mode: nearest-neighbor;
+        width: 100%; /* Default for mobile: Full width */
+    }
 
-	<img src="season.gif" width=30% align=center>
-	</p>
-<br>
-<p align=center>
-
-	<img src="aintnosnow4.gif" width=30% align=center>
-	</p>
-	<br>
-	<p align=center>
-	This Website is Under Construction.. <br> More Info Coming Soon...
-	</p>
-<br>
-	<p align="center">
-    <a href="javascript:void(0)" onclick="toggleMusic()">
-        Play Music
-    </a>
-</p>
-
-<audio id="bgMusic" src="./granite.mp3" loop></audio>
-
-<script>
-    function toggleMusic() {
-        var music = document.getElementById('bgMusic');
-        if (music.paused) {
-            music.play();
-        } else {
-            music.pause();
+    /* Desktop Overrides (Screens wider than 768px) */
+    @media (min-width: 768px) {
+        img {
+            width: 40%; 
         }
     }
-</script>
-	
-	<br>
-	<br>
-	<br>
-	<!-- hitwebcounter Code START -->
-<a href="https://www.hitwebcounter.com/" target="_blank">
-<img src="https://hitwebcounter.com/counter/counter.php?page=21480661&style=0001&nbdigits=5&type=page&initCount=0" title="Free Tools" Alt="Free Tools"   border="0" /></a>                                    
-                                    
-                                        
-                                          
-                            
+
+    /* Centering the hit counter link */
+    .counter-wrapper {
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+    <img src="season.gif" alt="Season GIF">
+    <br>
+    <img src="aintnosnow4.gif" alt="No Snow GIF">
+
+    <br>
+    <p align="center">
+        This Website is Under Construction.. <br> More Info Coming Soon...
+    </p>
+
+    <p align="center">
+        <a href="javascript:void(0)" onclick="toggleMusic()">Play Music</a>
+    </p>
+
+    <audio id="bgMusic" src="./granite.mp3" loop></audio>
+
+    <div class="counter-wrapper">
+        <a href="https://www.hitwebcounter.com/" target="_blank">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21480661&style=0001&nbdigits=5&type=page&initCount=0" 
+                 title="Free Tools" Alt="Free Tools" border="0" style="width: auto;">
+        </a>
+    </div>
+
+    <script>
+        function toggleMusic() {
+            var music = document.getElementById('bgMusic');
+            music.paused ? music.play() : music.pause();
+        }
+    </script>
 </body>
 </html>

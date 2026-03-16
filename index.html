@@ -1,48 +1,55 @@
 <html><head><title>Martinsburg Granite Company</title></head><body>
-	<style>
-	img {     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges;          /* Firefox                        */
-    image-rendering: -o-crisp-edges;            /* Opera                          */
-    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-    image-rendering: pixelated;                 /* Universal support since 2021   */
-    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */'
-    
-} <style>
-    /* Base styles for all images */
+<style>
+    /* Reset and Base Styles */
+    body {
+        margin: 0;
+        padding: 10px;
+        text-align: center; /* This handles the alignment for text and inline elements */
+    }
+
+    /* Target all images for responsiveness */
     img {
         display: block;
-        margin: 0 auto; /* Centers the images */
+        margin: 1px auto; /* Centers the block-level images */
+        width: 100%;       /* Default: 100% width for phones */
+        height: auto;
         image-rendering: pixelated;
         -ms-interpolation-mode: nearest-neighbor;
-        width: 100%; /* Default for mobile: Full width */
     }
 
     /* Desktop Overrides (Screens wider than 768px) */
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         img {
             width: 40%; 
         }
+        /* Keep the counter small on desktop so it doesn't look huge */
+        .counter-img {
+            width: auto !important;
+        }
     }
 
-    /* Centering the hit counter link */
+    /* Force the counter to center and handle its size */
     .counter-wrapper {
-        text-align: center;
-        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .counter-img {
+        display: inline-block; /* Allow it to be its natural size or 100% */
+        max-width: 100%;
     }
 </style>
 
 <body>
     <img src="season.gif" alt="Season GIF">
-    <br>
     <img src="aintnosnow4.gif" alt="No Snow GIF">
 
-    <br>
-    <p align="center">
+    <p>
         This Website is Under Construction.. <br> More Info Coming Soon...
     </p>
 
-    <p align="center">
+    <p>
         <a href="javascript:void(0)" onclick="toggleMusic()">Play Music</a>
     </p>
 
@@ -51,7 +58,7 @@
     <div class="counter-wrapper">
         <a href="https://www.hitwebcounter.com/" target="_blank">
             <img src="https://hitwebcounter.com/counter/counter.php?page=21480661&style=0001&nbdigits=5&type=page&initCount=0" 
-                 title="Free Tools" Alt="Free Tools" border="0" style="width: auto;">
+                 title="Free Tools" alt="Free Tools" border="0" class="counter-img">
         </a>
     </div>
 

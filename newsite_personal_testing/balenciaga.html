@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Balenciaga Fan Project</title>
+    
+    
+    <style>
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+}
+
+.column {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/* widths */
+.three-wide {
+    width: 33.33%;
+}
+
+.four-wide {
+    width: 25%;
+}
+
+.two-wide {
+    width: 50%;
+}
+
+.one-wide {
+    width: 100%;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body>
+
+    <h1>Balenciaga Fan Project</h1>
+
+
+    <p>
+		
+		At the time of doing this project (2018/2019), I was very interested in shanzhai (山寨 - bootleg/counterfit/parody products); usually when thinking of shanzhai products, phones or knockoff iPods come to mind, but I was looking at a lot of places like factories that make replica/fake fashion for a few brands, who also will make "fantasy pieces", for example a fake collaboration piece with both Louis Vuitton and Gucci branding, when in reality you cannot buy an official piece like this. Mostly this takes the form of shoes; one time on Taobao I saw a Balenciaga Triple-S shoe with Balenciaga, Louis Vuitton, and Off-White branding all on the same shoe. No such shoe 'officially' exists.
+		</p>
+		I really just loved the FW18 collection that Balenciaga just released, and I wanted to make more pieces that seemed like they belonged to this collection; just bootleg/shanzhai fantasy pieces that would fit in with the FW18 show's vision.
+        Using a corpus of Balenciaga runway shows, catalogues, and campaigns, a Pix2PixHD network was trained to reconstruct Balenciaga outfits from Densepose silhouettes.
+        <br><br>
+        The results are outfits which reflect this, but also the abstraction/misinterpretation from using these types of earlier generative systems. I think it still comes through that they are heavily inspired by Balenciaga's past few years under Demna Gvasalia, even though the network lacks any contextual awareness of the non-visual functions of clothing (e.g. why people carry bags, whether or not bags are separate from pants, why people prefer symmetrical outfits) - and in turn produces more strange outfits that completely disregard these functions.
+        
+    </p>
+    
+        <p>Arabelle Sicardi interviewed me for an SSENSE article on this work which is available here: <a href="https://www.ssense.com/en-in/editorial/fashion/do-androids-dream-of-balenciaga-ss29">https://www.ssense.com/en-in/editorial/fashion/do-androids-dream-of-balenciaga-ss29</a></p>
+	
+	    <p>The images below this point are ordered from the beginning of the project to the more final results. If you want, you can <a href="#finishedoutfits">skip to the final images.</a></p>
+
+    <p>
+		All images may be clicked to enlarge
+	</p>
+	<hr>
+	
+	
+	<!--
+
+    <p>
+        Examples of these strange outfits (featured on this page) include: 
+    </p>
+
+    <ul>
+        <li>A pair of pants with a wrap-around bag attached to the shin.</li>
+        <li>A woman holding a tassle of cloth instead of a bag.</li>
+        <li>A 3 part asymmetric coat.</li>
+        <li>Various outfits with what appears to be transparent or semi-transparent fabric.</li>
+        <li>A jumpsuit paired with what appears to be a leather jacket.</li>
+        <li>A multi-component Asymmetrical coat.</li>
+    </ul>
+    -->
+
+
+    <hr>
+
+	<div class="row">
+	<div class="column two-wide">
+	<a href="./balenciaga_files/early1.png"><img src="./balenciaga_files/early1.png"></a>
+	</div>
+	<div class="column two-wide">
+	<a href="./balenciaga_files/early2.png"><img src="./balenciaga_files/early2.png"></a>
+	</div>
+	</div>
+
+<hr>
+<!-- Row 2 -->
+<div class="row">
+	<div class="column two-wide">
+<video loop autoplay muted playsinline width="100%">
+			<source src="./balenciaga_files/dataset.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>	
+		</div>	<div class="column two-wide">
+
+		Balenciaga's photography followed some pretty rigid rules, making it a pretty much perfect dataset to work with. Their website was already laid out in a grid, and the filenames were just numbers, so it was about 4 or 5 lines of python to just scrape their entire site.
+</div>
+</div>
+
+<!-- Row 3 -->
+<div class="row">
+	<div class="column two-wide">
+	There were 3 views of each garment too, so I decided to use densepose and train a pix2pixHD network to go from the pose -> photo. This also helped when adding runway photos and campaigns which have unusual poses into the dataset.
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_gen2.jpg"><img src="./balenciaga_files/early_gen2.jpg"></a>
+	</div>
+</div>
+<hr>
+Below: Very very early generations. There was some light overfitting (when the network starts to just memorize specific outfits instead of synthesizing new ones); but it was different enough to still be interesting. This is best seen below (left) a generated coat, and then below (right) the ground truth for that pose.
+<!-- Row 5 -->
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_gen6_overfit.jpg"><img src="./balenciaga_files/early_gen6_overfit.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_gen6_reference.jpg"><img src="./balenciaga_files/early_gen6_reference.jpg"></a>
+	</div>
+</div>
+<!-- Row 4 -->
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_gen4_overfit.jpg"><img src="./balenciaga_files/early_gen4_overfit.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_gen5_overfit.jpg"><img src="./balenciaga_files/early_gen5_overfit.jpg"></a>
+	</div>
+</div>
+
+
+<hr>
+At this point, because of the overfitting, I made some changes to the network + expanded the dataset with more campaigns + more runway shows, and restarted training. Below are some early generations from this (more successful) training run.
+<!-- Row 6 -->
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_2_gen1.jpg"><img src="./balenciaga_files/early_2_gen1.jpg"></a>
+	</div>
+	<div class="column four-wide">
+	<a href="./balenciaga_files/early_2_gen3.jpg"><img src="./balenciaga_files/early_2_gen3.jpg"></a>
+
+	</div>
+		<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen4.jpg"><img src="./balenciaga_files/early_2_gen4.jpg"></a>
+
+	</div>
+</div>
+
+<!-- Row 8 -->
+<div class="row">
+	<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen5.jpg"><img src="./balenciaga_files/early_2_gen5.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen6.jpg"><img src="./balenciaga_files/early_2_gen6.jpg"></a>
+	</div>
+		<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen7_good.jpg"><img src="./balenciaga_files/early_2_gen7_good.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen8.jpg"><img src="./balenciaga_files/early_2_gen8.jpg"></a>
+	</div>
+
+</div>
+
+<!-- Row 9 -->
+
+<!-- Row 10 -->
+<div class="row">
+	<div class="column four-wide">
+		<a href="./balenciaga_files/early_2_gen7_2.jpg"><img src="./balenciaga_files/early_2_gen7_2.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/early_2_symmetry.jpg"><img src="./balenciaga_files/early_2_symmetry.jpg"></a>
+	</div>
+		<div class="column four-wide">
+			I thought it was very interesting that even though pretty much all of the images used for training were relatively symmetrical, some of the outputs completely lacked symmetry. 
+</div>
+</div>
+<hr id="finishedoutfits">
+At this point after some more restarts / changes to both the model and the dataset, I finally got a network that was outputting what I thought were interesting results. Below are some of the more "finished" outfits. The main things I was interested in were the misinterpretations - the network would output garments that appeared to be treated with bleach (although that was not in the dataset), it would half-generate bags and sometimes make images of people holding what looked more like tassels, and sometimes really nice convolutional artefacts would show up as texture.
+
+<!-- Row 12 -->
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/dress.jpg"><img src="./balenciaga_files/dress.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/2.jpg"><img src="./balenciaga_files/2.jpg"></a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/sweater_good.jpg"><img src="./balenciaga_files/sweater_good.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/5.jpg"><img src="./balenciaga_files/5.jpg"></a>
+	</div>
+</div>
+
+<!-- Row 13 -->
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/2_redtie.jpg"><img src="./balenciaga_files/2_redtie.jpg"></a>
+	</div>
+	
+		<div class="column four-wide">
+		<a href="./balenciaga_files/3.jpg"><img src="./balenciaga_files/3.jpg"></a>
+	</div>
+			<div class="column four-wide">
+		<a href="./balenciaga_files/8.jpg"><img src="./balenciaga_files/8.jpg"></a>
+	</div>
+</div>
+
+
+<!-- Row 14 -->
+<div class="row">
+	
+	<div class="column four-wide">
+		<a href="./balenciaga_files/1.jpg"><img src="./balenciaga_files/1.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/4.jpg"><img src="./balenciaga_files/4.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/6.jpg"><img src="./balenciaga_files/6.jpg"></a>
+	</div>
+		<div class="column four-wide">
+		<a href="./balenciaga_files/7.jpg"><img src="./balenciaga_files/7.jpg"></a>
+</div>
+</div>
+<hr>
+Below: A really nice example of convolutional artifacting making what looks like a knit/woven texture.
+<div class="row">
+	<div class="column one-wide">
+		<a href="./balenciaga_files/4_convolutional_artefacting.jpg"><img src="./balenciaga_files/4_convolutional_artefacting.jpg"></a>
+	
+</div>
+</div>
+<hr>
+<!--
+Detail shots of some of the generated faces 
+<div class="row">
+	
+	<div class="column four-wide">
+		<a href="./balenciaga_files/texture_spot1.jpg"><img src="./balenciaga_files/texture_spot1.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/texture_spot2.jpg"><img src="./balenciaga_files/texture_spot2.jpg"></a>
+	</div>
+	<div class="column four-wide">
+		<a href="./balenciaga_files/texture_spot4.jpg"><img src="./balenciaga_files/texture_spot4.jpg"></a>
+	</div>
+		<div class="column four-wide">
+		<a href="./balenciaga_files/texture_spot3.jpg"><img src="./balenciaga_files/texture_spot3.jpg"></a>
+</div>
+-->
+<!-- Row 15 -->
+
+Using vid2vid, and the FW18 runway show as a dataset, I trained a model to generate runway videos; there's not very much temporal cohesion (outfits change whenever the camera angle does, and even sometimes without).
+<div class="row">
+	</div>
+	<div class="column one-wide">
+		<video loop autoplay muted playsinline width="100%">
+			<source src="./balenciaga_files/runway1.mp4" type="video/webm">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+</div>
+
+I trained a higher resolution vid2vid model, but the results (in my opinion) weren't as interesting ...
+<div class="row">
+	<div class="column one-wide">
+		<video loop autoplay muted playsinline width="100%">
+			<source src="./balenciaga_files/runway2_highres.mp4" type="video/webm">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+	
+</div>
+
+<hr>
+As for physical production of these outfits, me and my really good friend <a href="http://www.instagram.com/mushbuh">Mushbuh</a> made "shin-bag" pants based off of the below generation (which is likely a misinterpretation of a model holding a bag next to their leg), through his brand <a href="http://www.itemlabel.com">itemLabel</a>.
+<div class="row">
+	<div class="column two-wide">
+		<a href="./balenciaga_files/shinbag.jpg"><img src="./balenciaga_files/shinbag.jpg"></a>
+	</div>
+	<div class="column two-wide">
+		<a href="./balenciaga_files/shinbag.webp"><img src="./balenciaga_files/shinbag.webp"></a>
+
+	</div>
+	
+		<div class="column two-wide">
+					<a href="./balenciaga_files/shinbagwallet.webp"><img src="./balenciaga_files/shinbagwallet.webp"></a>
+
+
+	</div>
+	
+			<div class="column two-wide">
+		<a href="./balenciaga_files/shinbagopen.webp"><img src="./balenciaga_files/shinbagopen.webp"></a>
+
+	</div>
+	
+</div>
+</body>
+</html>

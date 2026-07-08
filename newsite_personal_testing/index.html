@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Robbie Barrat</title>
+    
+<style>
+
+@keyframes classicBlinkEffect {
+  50% {
+    color: black;
+  }
+}
+
+li.red-bullet::marker {
+  animation: classicBlinkEffect 1s step-start infinite;
+  color: red;
+}
+
+
+
+</style>
 </head>
 <body>
     <h2>Robbie Barrat</h2>
@@ -133,7 +150,8 @@
     <ul>
         <li><a href="./artwork_i_like.html">Fattori, Corot, Morandi, Barrot</a> - small collection of some of my favorite artwork. (2026)</li>
         <li><a href="./granite.html">Martinsburg Granite</a> - images of my studio, set up after I finished university and moved back to West Virginia (2026).</li>
-        <li><a href="./kroug.html">Iconography / Frescoes</a> - small post about a visit to see frescoes by Fr. Gregory Kroug at the Church of the "Notre Dame de Kazan" in Moisenay, France (2026)</li>
+        <li class="red-bullet"><a href="./kroug.html">Iconography / Frescoes</a> - small post about a visit to see frescoes by Fr. Gregory Kroug at the Church of the "Notre Dame de Kazan" in Moisenay, France (2026)</li> 
+
 
     </ul>
         <hr>

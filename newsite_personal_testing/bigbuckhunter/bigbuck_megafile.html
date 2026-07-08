@@ -80,10 +80,6 @@
       justify-content: flex-start;
     }
 
-    .rest-text {
-
-      }
-
     .rest-top {
       display: block;
       margin-left: auto; /* Aligns rest_top.png to the right edge of rest_bottom.png */
@@ -168,8 +164,8 @@
         }
 
         .rest-transparent-img {
-            float: right;
-            width: 66.66%; /* Takes up two-thirds of the screen width */
+            float: none;
+            width: 80%; /* Takes up two-thirds of the screen width */
             height: auto;
             
             /* Apply the shape contour wrapping */
@@ -179,9 +175,49 @@
             
             margin-left: 0px; /* Normal box margin fallback */
         }
+        
+.rest-text {
+    margin: 0;
+    padding-top: 0;
+}
+
+<!-- i hate mobile phones. --> 
+
+/* Mobile-first fallback: spans full width on phones */
+.half-except-phone {
+    width: 100%;
+}
+
+/* Mobile-first fallback: spans full width on phones */
+.twothirds-except-phone {
+    width: 100%;
+}
 
 
 
+/* Desktop override: drops to 50% width on larger screens */
+@media (min-width: 768px) {
+    .half-except-phone {
+        width: 50%;
+    }
+    .twothirds-except-phone {
+    width: 66.66%;
+	}
+	.rest-transparent-img {
+        float: right;
+        width: 66.66%;
+        shape-outside: url('rest_shape.png');
+        shape-image-threshold: 0.5;
+        shape-margin: 0px;
+        margin-left: 0px;
+    }
+	.rest-text {
+        /* 1. Reset standard margin */
+        margin: 0; 
+        
+        padding-top: calc(66.66vw * 0.33); 
+    }
+}
 
     </style>
 </head>
@@ -198,7 +234,7 @@
 		<br>
 		<div class="row">
 	
-		<div class="column twothirds-wide">
+		<div class="column twothirds-except-phone">
 		<img src="nighttime_title2.png" width=100%>
 
 		</div>
@@ -209,8 +245,7 @@
 		<br>
 		<div class="wrap-container">
             <img src="rest_shape.png" alt="Restoration Preview" class="rest-transparent-img">
-            
-            <p><br><br><br><br><br><br>
+            <p class="rest-text">
                 The key differences from the original game and Big Buck Hunter: Restoration include endlessly 
                 generating landscapes instead of a fixed amount of levels, evoking the eternal quality of life 
                 before the fall. The deer now exhibit restful and peaceful behaviors to correspond with this, 
@@ -292,7 +327,7 @@
 		</p>
 		
 		<div class="row">
-		<div class="column two-wide">
+		<div class="column twothirds-except-phone">
 		<img src="turkeyflourish.gif" width=100%>
 		</div>
 		</div>
@@ -550,7 +585,7 @@ In this light, the project does not seek to recreate Eden as it was; it does not
   <div class="row">
   <div class="column two-wide">
 	   </div>
-	     <div class="column two-wide">
+	     <div class="column half-except-phone">
 			 	  	  <img src="buckmeetingturkey.png" width=100%>
 
 	   </div>
